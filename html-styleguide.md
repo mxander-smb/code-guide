@@ -4,8 +4,7 @@ Best practices and guidelines for writing HTML with approachable formatting, syn
 
 ## General
 
-- Practicality over purity: Strive to maintain HTML standards and semantics, but not at the expense of practicality. Use the least amount of markup with the fewest intricacies whenever possible.
-- JavaScript generated markup: Writing markup in a JavaScript file makes the content harder to find, harder to edit, and less performant. Avoid it whenever possible.
+Practicality over purity: Strive to maintain HTML standards and semantics, but not at the expense of practicality. Use the least amount of markup with the fewest intricacies whenever possible.
 
 ## Syntax
 
@@ -133,6 +132,16 @@ Classes make for great reusable components, so they come first. Ids are more spe
 Many attributes don’t require a value to be set, like `disabled` or `checked`, so don’t set them.
 
 ```html
+<!-- Not so great -->
+<input type="text" disabled="disabled">
+
+<input type="checkbox" value="1" checked="checked">
+
+<select>
+  <option value="1" selected="selected">1</option>
+</select>
+
+<!-- Better -->
 <input type="text" disabled>
 
 <input type="checkbox" value="1" checked>
@@ -142,7 +151,14 @@ Many attributes don’t require a value to be set, like `disabled` or `checked`,
 </select>
 ```
 
-For more information, [read the WhatWG section](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#boolean-attributes).
+For more information, [read the WhatWG section](https://html.spec.whatwg.org/multipage/infrastructure.html#boolean-attributes).
+
+## Semantic HTML
+
+Strive to maintain HTML standards and semantics. Use semantic HTML elements when possible, but not at the expense of practicality. Semantic elements describe their meaning to both the browser and the developer.
+
+- Non-semantic elements: E.g. `<div>` and `<span>` - Tells nothing about its content.
+- Semantic elements: E.g. `<article>`, `<section>`, `<nav>`, and `<ul>` - Clearly defines its content.
 
 ## Lean markup
 
@@ -191,6 +207,15 @@ Make use of `<thead>`, `<tfoot>`, `<tbody>`, and `<th>` tags (and `scope` attrib
   </tbody>
 </table>
 ```
+
+## Editor preferences
+
+Set your editor to the following settings to avoid common code inconsistencies and dirty diffs:
+
+- Use soft-tabs set to two spaces.
+- Trim trailing white space on save.
+- Set encoding to UTF-8, or the projects character encoding.
+- Add new line at end of files.
 
 ---
 
