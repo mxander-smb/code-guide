@@ -103,13 +103,13 @@ Here’s a comprehensive example:
 }
 ```
 
+Use the stylelint rule `declaration-block-properties-order` to check the order easily.
+
 ## Variables
 
 - Define all local variables at the top of the file after the imports.
-- Namespace local variables with the filename.
-  - eg `alert-box.scss` →`$alert-box-font-size: 14px;`
+- Namespace local variables with the filename, e.g. `alert-box.scss` has the variable `$alert-box-font-size: 14px;`
 - Variables should be lowercase.
-
 
 ## Color
 
@@ -129,13 +129,15 @@ Example:
 
 /* Good */
 .c-link {
-  color: color(blue);
+  color: $color-blue;
   border-color: #fff;
   background-color: rgba(#fff,.06);
 }
 ```
 
 ## Don't use `@import`
+
+> Note: Only concerns plain CSS, not preprocessor `@import`.
 
 Compared to `<link>`s, `@import` is slower, adds extra page requests, and can cause other unforeseen problems. Avoid them and instead opt for an alternate approach:
 
@@ -336,11 +338,13 @@ Modifier: override or extend the base styles of a block or element with modifier
 
 ### BEM best practices
 
-Don't `@extend` block modifiers with the block base.
-- Good: `<div class="my-block my-block--modifier">`
+Don't `@extend` block modifiers with the block base, this is against the BEM principle:
+
 - Bad: `<div class="my-block--modifier">`
+- Good: `<div class="my-block my-block--modifier">`
 
 Don't create elements inside elements. If you find yourself needing this, consider converting your element into a block.
+
 - Bad: `.alert-box__close__button`
 
 Choose your modifiers wisely. These two rules have very different meaning:
@@ -409,7 +413,7 @@ There are a few reserved namespaces for classes to provide common and globally-a
 
 ## File organization
 
-I prefer a 5-1 pattern, which is abstracted from the [7-1 pattern](https://sass-guidelin.es/#architecture). 5 folders, 1 file to compile them all in a single CSS file.
+Define a file organization for your project, like the 5-1 pattern, which is abstracted from the [7-1 pattern](https://sass-guidelin.es/#architecture). 5 folders, 1 file to compile them all in a single CSS file.
 
 ```bash
 styles/
